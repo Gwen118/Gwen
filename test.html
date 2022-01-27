@@ -1,6 +1,48 @@
+<table class="table table-bordered table-hover dataTable" id="tabelList">
+                        <thead>
+                            <tr class="firstRow">
+                                <td>名稱</td>
+                                <td>規格/型號</td>
+                                <td>生產單位</td>
+                                <td>供貨單位</td>
+                                <td>訂購數量</td>
+                                <td>單價</td>
+                                <td>小計</td>
+                                <td>操作</td>
+                            </tr>
+                        </thead>
+                        <tbody id="ListView">
+                            <tr>
+                                <td>
+                                    <input class="text-center form-control" style="border:none" type="text" name="DetailedListVal" />
+                                </td>
+                                <td>
+                                    <input class="text-center form-control" style="border:none" type="text" name="DetailedListVal" />
+                                </td>
+                                <td>
+                                    <input class="text-center form-control" style="border:none" type="text" name="DetailedListVal" />
+                                </td>
+                                <td>
+                                    <input class="text-center form-control" style="border:none" type="text" name="DetailedListVal" />
+                                </td>
+                                <td>
+                                    <input class="text-center form-control txtQuantity " style="border:none" type="text" name="DetailedListVal" />
+                                </td>
+                                <td>
+                                    <input class="text-center form-control txtPrice" style="border:none" type="text" name="DetailedListVal" />
+                                </td>
+                                <td>
+                                    <input class="text-center form-control txtAmount" style="border:none" type="text" name="DetailedListVal" />
+                                </td>
+                                <td onclick="deleteRow(this)"><button type="button" class="btn btn-danger waves-effect">刪除</button></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" style="text-align:right;">總計</td>
+                                <td colspan="3"><span id="total"></span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <button type="button" onclick="AddList()" class="btn btn-success waves-effect">添加一行</button>
 
-<html>
-  
-  <h1>...</h1>
-  
-  </html>
