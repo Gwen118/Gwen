@@ -1,48 +1,82 @@
-<table class="table table-bordered table-hover dataTable" id="tabelList">
-                        <thead>
-                            <tr class="firstRow">
-                                <td>名稱</td>
-                                <td>規格/型號</td>
-                                <td>生產單位</td>
-                                <td>供貨單位</td>
-                                <td>訂購數量</td>
-                                <td>單價</td>
-                                <td>小計</td>
-                                <td>操作</td>
-                            </tr>
-                        </thead>
-                        <tbody id="ListView">
-                            <tr>
-                                <td>
-                                    <input class="text-center form-control" style="border:none" type="text" name="DetailedListVal" />
-                                </td>
-                                <td>
-                                    <input class="text-center form-control" style="border:none" type="text" name="DetailedListVal" />
-                                </td>
-                                <td>
-                                    <input class="text-center form-control" style="border:none" type="text" name="DetailedListVal" />
-                                </td>
-                                <td>
-                                    <input class="text-center form-control" style="border:none" type="text" name="DetailedListVal" />
-                                </td>
-                                <td>
-                                    <input class="text-center form-control txtQuantity " style="border:none" type="text" name="DetailedListVal" />
-                                </td>
-                                <td>
-                                    <input class="text-center form-control txtPrice" style="border:none" type="text" name="DetailedListVal" />
-                                </td>
-                                <td>
-                                    <input class="text-center form-control txtAmount" style="border:none" type="text" name="DetailedListVal" />
-                                </td>
-                                <td onclick="deleteRow(this)"><button type="button" class="btn btn-danger waves-effect">刪除</button></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="5" style="text-align:right;">總計</td>
-                                <td colspan="3"><span id="total"></span></td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                    <button type="button" onclick="AddList()" class="btn btn-success waves-effect">添加一行</button>
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var result_1;
+//加法
+function add() {
+var a = getFirstNumber();
+var b = getTwiceNumber();
+var re = Number(a) + Number(b);
+sendResult(re);
+}
+//減法
+function subtract() {
+var a = getFirstNumber();
+var b = getTwiceNumber();
+var re = a - b;
+sendResult(re);
+}
+//乘法
+function ride() {
+var a = getFirstNumber();
+var b = getTwiceNumber();
+var re = a * b;
+sendResult(re);
+}
+//除法
+function devide() {
+var a = getFirstNumber();
+var b = getTwiceNumber();
+var re = a / b;
+sendResult(re);
+}
+//給p標簽傳值
+function sendResult(result_1) {
+var num = document.getElementById("result")
+num.innerHTML = result_1;
+}
+//獲取第一位數字
+function getFirstNumber() {
+var firstNumber = document.getElementById("first").value;
+return firstNumber;
+}
+//獲取第二位數字
+function getTwiceNumber() {
+var twiceNumber = document.getElementById("twice").value;
+return twiceNumber;
+}
+</script>
+</head>
+<body>
+<p>簡單計算器:</p>
+<table border="1" style="position: center;">
+<tr>
+<td>第一個數：</td>
+<td><input type="text" id="first" /></td>
+</tr>
+<tr>
+<td>第二個數：</td>
+<td><input type="text" id="twice" /></td>
+</tr>
+<tr>
+<td colspan="2">&nbsp;
+<button style="width: inherit" onclick="add()">+</button> &nbsp;
+<button style="width: inherit" onclick="subtract()">-</button>
+&nbsp;
+<button style="width: inherit" onclick="ride()">*</button> &nbsp;
+<button style="width: inherit" onclick="devide()">/</button>
+</td>
+</tr>
+<tr>
+<td colspan="2" rowspan="2">
+<p id="result"></p>
+</td>
+</tr>
+</table>
+
+</body>
+</html>
