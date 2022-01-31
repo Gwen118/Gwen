@@ -8,6 +8,8 @@
 <script language="javascript">
 	var result_1;
 	var result_2;
+	var r1,r2,r3,r4;
+	var re1,re2;
 	//加法
 	function add() {
 		var a = getFirstNumber();
@@ -80,6 +82,180 @@
 			sendResult2(d/sum);
 		}
 	}
+	//直接算CP值
+	function caculateCP()
+	{
+		var a1 = getFirstLevel();
+		var a2 = getFirstPower();
+		var b1 = getSecondLevel();
+		var b2 = getSecondPower();
+		var c1 = getThirdLevel();
+		var c2 = getThirdPower();
+		var d1 = getForthLevel();
+		var d2 = getForthPower();
+		sendResult1(a2/a1);
+		sendResult2(b2/b1);
+		sendResult3(c2/c1);
+		sendResult4(d2/d1);
+		var r1 = a2/a1;
+		var r2 = b2/b1;
+		var r3 = c2/c1;
+		var r4 = d2/d1;
+		var re1=0,re2=0;
+		var temp=0;
+		re1=findMax(r1,r2,r3,r4);
+		if(re1==1)
+		{
+			sendResult5("點第一排");
+			temp=r1;
+			r1=-100;
+		}
+		else if(re1==2)
+		{
+			sendResult5("點第二排");
+			temp=r2;
+			r2=-100;
+		}
+		else if(re1==3)
+		{
+			sendResult5("點第三排");
+			temp=r3;
+			r3=-100;
+		}
+		else if(re1==4)
+		{
+			sendResult5("點第四排");
+			temp=r4;
+			r4=-100;
+		}
+		
+		re2=findMax(r1,r2,r3,r4);
+		var store = getRe(re1);
+		if(re2==1)
+		{
+			temp=temp/r1;
+			if(temp<store)
+			{
+				sendResult6(",點到消耗大於"+store+"時，請重新計算");
+			}
+			else
+				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
+		}
+		else if(re2==2)
+		{
+			temp=temp/r2;
+			if(temp<store)
+			{
+				sendResult6(",點到消耗大於"+store+"時，請重新計算");
+			}
+			else
+				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
+		}
+		else if(re2==3)
+		{
+			temp=temp/r3;
+			if(temp<store)
+			{
+				sendResult6(",點到消耗大於"+store+"時，請重新計算");
+			}
+			else
+				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
+		}
+		else if(re2==4)
+		{
+			temp=temp/r4;
+			if(temp<store)
+			{
+				sendResult6(",點到消耗大於"+store+"時，請重新計算");
+			}
+			else
+				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
+		}
+		else
+			sendResult6("請重新計算");
+	}
+	
+	function getRe(re)
+	{
+		if(re==1)
+		{
+			return getFirstLevel();
+		}
+		else if(re==2)
+		{
+			return getSecondLevel();
+		}
+		else if(re==3)
+		{
+			return getThirdLevel();
+		}
+		else if(re==4)
+		{
+			return getForthLevel();
+		}
+	}
+	function findMax(r1,r2,r3,r4)
+	{
+		if(r1>=r2)
+		{
+			if(r1>=r3)
+			{
+				if(r1>=r4)// r1>r2>r3>r4
+				{
+					return 1;
+					//sendResult5("點第一排");
+				}
+				else // r4>r1>r2>r3
+				{
+					return 4;
+					//sendResult5("點第四排");
+				}
+			}
+			else //r1>r2 , r3>r1
+			{
+				if(r3>=r4) //r1>r2 , r3>r1 , r3>r4 
+				{
+					return 3;
+					//sendResult5("點第三排");
+				}
+				else //r1>r2 , r3>r1 , r4>r3 
+				{
+					return 4;
+					//sendResult5("點第四排");
+				}
+			}
+		}
+		else // r2>r1
+		{
+			if(r2>=r3) // r2>r1 ,r2>r3
+			{
+				if(r2>=r4) // r2>r1 ,r2>r3 , r2>r4
+				{
+					return 2;
+					//sendResult5("點第二排");
+				}
+				else // r2>r1 ,r2>r3 , r4>r2
+				{
+					return 4;
+					//sendResult5("點第四排");
+				}
+			}
+			else // r2>r1 ,r3>r2
+			{
+				if(r3>=r4) // r2>r1 ,r3>r2 , r3>r4
+				{
+					return 3;
+					//sendResult5("點第三排");
+				}
+				else // r2>r1 ,r3>r2 , r4>r3
+				{
+					return 4;
+					//sendResult5("點第四排");
+				}
+			}
+		}
+	}
+	
 	//給p標簽傳值
 	function sendResult1(result_1) {
 		var num = document.getElementById("firstresult")
@@ -89,6 +265,23 @@
 		var num = document.getElementById("secondresult")
 		num.innerHTML = result_2;
 	}
+	function sendResult3(result_3) {
+		var num = document.getElementById("thirdresult")
+		num.innerHTML = result_3;
+	}
+	function sendResult4(result_4) {
+		var num = document.getElementById("forthresult")
+		num.innerHTML = result_4;
+	}
+	function sendResult5(result_5) {
+		var num = document.getElementById("finalresult")
+		num.innerHTML = result_5;
+	}
+	function sendResult6(result_6) {
+		var num = document.getElementById("finalNextresult")
+		num.innerHTML = result_6;
+	}
+	
 	//獲取第一位等級
 	function getFirstLevel() {
 		var firstNumber = document.getElementById("firstlevel").value;
@@ -109,64 +302,83 @@
 		var twiceNumber = document.getElementById("secondpower").value;
 		return twiceNumber;
 	}
+	//獲取第三位等級
+	function getThirdLevel() {
+		var firstNumber = document.getElementById("thirdlevel").value;
+		return firstNumber;
+	}
+	//獲取第三位勢力
+	function getThirdPower() {
+		var twiceNumber = document.getElementById("thirdpower").value;
+		return twiceNumber;
+	}
+	//獲取第四位等級
+	function getForthLevel() {
+		var firstNumber = document.getElementById("forthlevel").value;
+		return firstNumber;
+	}
+	//獲取第四位勢力
+	function getForthPower() {
+		var twiceNumber = document.getElementById("forthpower").value;
+		return twiceNumber;
+	}
 </script>
 	</head>
 
 	<body>
-		<h2 class="text-center" style="margin-bottom: 0;">計算機</h2>
+		<h2 class="text-center" style="margin-bottom: 0;">羈絆值計算機</h2>
 		<br>
 
 		<table border="1" style="position: center;">
 			<tr>
-				<td colspan="2">填入羈絆等級</td>
-				<td colspan="2">填入增加勢力</td>
-				<td>每一羈絆點提升的勢力</td>
+				<td colspan="2">填入羈絆消耗點數</td>
+				<td colspan="2">填入增加的勢力</td>
+				<td>每1點數提升的勢力</td>
 			</tr>
 			<tr>
-				<td>羈絆等級</td>
+				<td>消耗</td>
 				<td><input type="text" id="firstlevel" /></td>
-				<td>增加勢力</td>
+				<td>增加</td>
 				<td><input type="text" id="firstpower" /></td>
 				<td><output id="firstresult"></output></td>
 			</tr>
 			<tr>
-				<td>羈絆等級</td>
+				<td>消耗</td>
 				<td><input type="text" id="secondlevel" /></td>
-				<td>增加勢力</td>
+				<td>增加</td>
 				<td><input type="text" id="secondpower" /></td>
 				<td><output id="secondresult"></output></td>
 			</tr>
 			<tr>
-				<td>羈絆等級</td>
-				<td><input type="text" id="first" /></td>
-				<td>增加勢力</td>
-				<td><input type="text" id="twice" /></td>
-				<td><output id="result"></output></td>
+				<td>消耗</td>
+				<td><input type="text" id="thirdlevel" /></td>
+				<td>增加</td>
+				<td><input type="text" id="thirdpower" /></td>
+				<td><output id="thirdresult"></output></td>
 			</tr>
 			<tr>
-				<td>羈絆等級</td>
-				<td><input type="text" id="first" /></td>
-				<td>增加勢力</td>
-				<td><input type="text" id="twice" /></td>
-				<td><output id="result"></output></td>
+				<td>消耗</td>
+				<td><input type="text" id="forthlevel" /></td>
+				<td>增加</td>
+				<td><input type="text" id="forthpower" /></td>
+				<td><output id="forthresult"></output></td>
 			</tr>
 			<tr>
-				<td colspan="2">&nbsp;
-					<button
-						style="width: inherit; height: inherit; border: 3px orange double; background-color: #FFECC9;"
-						onclick="add()">+</button> &nbsp;
-					<button style="width: inherit" onclick="subtract()">-</button>
-					&nbsp;
-					<button style="width: inherit" onclick="ride()">*</button> &nbsp;
-					<button style="width: inherit" onclick="devide()">/</button> &nbsp;
-					<button style="width: inherit" onclick="test()">送出</button>
+			<td colspan="4">
+			*務必由上到下填入，計算才會準喔!!!
+			</td>
+				<td colspan="1">&nbsp;
+					<button style="width: inherit; height: inherit; border: 3px orange double; background-color: #FFECC9;"
+						onclick="caculateCP()">開始計算</button> &nbsp;
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" rowspan="2">
-					<p id="result"></p>
+				<td colspan="5">
+					<output id="finalresult"></output>
+					<output id="finalNextresult"></output>
 				</td>
 			</tr>
+
 		</table>
 
 	</body>
