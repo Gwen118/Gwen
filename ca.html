@@ -1,7 +1,7 @@
 
 <!DOCTYPE html>
 <html>
-<span style="font-family: Microsoft JhengHei; font-size: 12px;">
+<span style="font-family: Microsoft JhengHei; font-size: 14px;">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 
@@ -104,84 +104,53 @@
 		}
 		
 		re2=findMax(r1,r2,r3,r4);
-		var store = getRe(re1);
+		var store = getRePower(re1);//增加的勢力
+		var upperbound=0;
 		if(re2==1)
 		{
-			temp=temp/r1;
-			if(temp<store)
-			{
-				sendResult6(",點到消耗大於"+store+"時，請重新計算");
-			}
-			else
-			{
-				//temp=temp.substring(0,s.indexOf(".")+3);
-				temp=parseInt(temp);
-				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
-			}
+			upperbound = store/r1;
+			upperbound=parseInt(upperbound);
+			sendResult6(",點到消耗大於"+upperbound+"時，請重新計算");
 		}
 		else if(re2==2)
 		{
-			temp=temp/r2;
-			if(temp<store)
-			{
-				sendResult6(",點到消耗大於"+store+"時，請重新計算");
-			}
-			else
-			{
-				//temp=temp.substring(0,s.indexOf(".")+3);
-				temp=parseInt(temp);
-				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
-			}
+			upperbound = store/r2;
+			upperbound=parseInt(upperbound);
+			sendResult6(",點到消耗大於"+upperbound+"時，請重新計算");
 		}
 		else if(re2==3)
 		{
-			temp=temp/r3;
-			if(temp<store)
-			{
-				sendResult6(",點到消耗大於"+store+"時，請重新計算");
-			}
-			else
-			{
-				//temp=temp.substring(0,s.indexOf(".")+3);
-				temp=parseInt(temp);
-				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
-			}
+			upperbound = store/r3;
+			upperbound=parseInt(upperbound);
+			sendResult6(",點到消耗大於"+upperbound+"時，請重新計算");
 		}
 		else if(re2==4)
 		{
-			temp=temp/r4;
-			if(temp<store)
-			{
-				sendResult6(",點到消耗大於"+store+"時，請重新計算");
-			}
-			else
-			{
-				//temp=temp.substring(0,s.indexOf(".")+3);
-				temp=parseInt(temp);
-				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
-			}
+			upperbound = store/r4;
+			upperbound=parseInt(upperbound);
+			sendResult6(",點到消耗大於"+upperbound+"時，請重新計算");
 		}
 		else
 			sendResult6("請重新計算");
 	}
 	
-	function getRe(re)
+	function getRePower(re)
 	{
 		if(re==1)
 		{
-			return getFirstLevel();
+			return getFirstPower();
 		}
 		else if(re==2)
 		{
-			return getSecondLevel();
+			return getSecondPower();
 		}
 		else if(re==3)
 		{
-			return getThirdLevel();
+			return getThirdPower();
 		}
 		else if(re==4)
 		{
-			return getForthLevel();
+			return getForthPower();
 		}
 	}
 	function findMax(r1,r2,r3,r4)
