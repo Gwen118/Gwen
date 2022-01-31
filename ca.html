@@ -139,7 +139,11 @@
 				sendResult6(",點到消耗大於"+store+"時，請重新計算");
 			}
 			else
+			{
+				//temp=temp.substring(0,s.indexOf(".")+3);
+				temp=parseInt(temp);
 				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
+			}
 		}
 		else if(re2==2)
 		{
@@ -149,7 +153,11 @@
 				sendResult6(",點到消耗大於"+store+"時，請重新計算");
 			}
 			else
+			{
+				//temp=temp.substring(0,s.indexOf(".")+3);
+				temp=parseInt(temp);
 				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
+			}
 		}
 		else if(re2==3)
 		{
@@ -159,7 +167,11 @@
 				sendResult6(",點到消耗大於"+store+"時，請重新計算");
 			}
 			else
+			{
+				//temp=temp.substring(0,s.indexOf(".")+3);
+				temp=parseInt(temp);
 				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
+			}
 		}
 		else if(re2==4)
 		{
@@ -169,7 +181,11 @@
 				sendResult6(",點到消耗大於"+store+"時，請重新計算");
 			}
 			else
+			{
+				//temp=temp.substring(0,s.indexOf(".")+3);
+				temp=parseInt(temp);
 				sendResult6(",點到消耗大於"+temp+"時，請重新計算");
+			}
 		}
 		else
 			sendResult6("請重新計算");
@@ -337,44 +353,47 @@
 			</tr>
 			<tr>
 				<td>消耗</td>
-				<td><input type="text" id="firstlevel" /></td>
+				<td><input required type="text" id="firstlevel" /></td>
 				<td>增加</td>
 				<td><input type="text" id="firstpower" /></td>
-				<td><output id="firstresult"></output></td>
+				<td align="center"><output id="firstresult"></output></td>
 			</tr>
 			<tr>
 				<td>消耗</td>
-				<td><input type="text" id="secondlevel" /></td>
+				<td><input required type="text" id="secondlevel" /></td>
 				<td>增加</td>
 				<td><input type="text" id="secondpower" /></td>
-				<td><output id="secondresult"></output></td>
+				<td align="center"><output id="secondresult"></output></td>
 			</tr>
 			<tr>
 				<td>消耗</td>
-				<td><input type="text" id="thirdlevel" /></td>
+				<td><input required type="text" id="thirdlevel" /></td>
 				<td>增加</td>
 				<td><input type="text" id="thirdpower" /></td>
-				<td><output id="thirdresult"></output></td>
+				<td align="center"><output id="thirdresult"></output></td>
 			</tr>
 			<tr>
 				<td>消耗</td>
-				<td><input type="text" id="forthlevel" /></td>
+				<td><input required type="text" id="forthlevel" /></td>
 				<td>增加</td>
 				<td><input type="text" id="forthpower" /></td>
-				<td><output id="forthresult"></output></td>
+				<td align="center"><output id="forthresult"></output></td>
 			</tr>
 			<tr>
 			<td colspan="4">
 			*務必由上到下填入，計算才會準喔!!!
 			</td>
-				<td colspan="1">&nbsp;
+				<td colspan="1" align="center">&nbsp;
 					<button style="width: inherit; height: inherit; border: 3px orange double; background-color: #FFECC9;"
 						onclick="caculateCP()">開始計算</button> &nbsp;
 				</td>
 			</tr>
 			<tr>
 				<td colspan="5">
-					<output id="finalresult"></output>
+					提示：
+					<font color="#FF0000"><strong>
+					<output id="finalresult"></output></strong>
+					</font>
 					<output id="finalNextresult"></output>
 				</td>
 			</tr>
