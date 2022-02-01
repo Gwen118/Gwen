@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html>
+<span style="font-family: Microsoft JhengHei; font-size: 14px;">
+	<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"
+	charset="UTF-8">
+
+<title>Hwaa_Caculater</title>
+<script language="javascript">
+	var result_1;
+	var result_2;
+	var r1,r2,r3,r4;
+	var re1,re2;
+	var specialty;
+
+	//calculate
+	function test(){
+		var a = getFirstLevel();
+		var b = getFirstPower();
+		var c = getSecondLevel();
+		var d = getSecondPower();
+		var sum = 30;
+		var inc = 0;
+		var tmp1 = 0, tmp2 = 0;
+		var base = 7;
+		
+		if (a < 1){
+			sendResult1("NaN");
+		}
+		else if (a == 1)
+			sendResult1(b/sum);
+		else{
+			for (var i=2; i<=a; i++){
+				tmp1 = (i-2) % 5;
+				tmp2 = tmp1 % 3;
+				sum = sum + base + ((i-2) - tmp1)*2/5 + (tmp1-tmp2)/3;
+				
+			}
+			sendResult1(b/sum);
+		}
+		/////
+		var sum = 30;
+		var inc = 0;
+		var tmp1 = 0, tmp2 = 0;
+		var base = 7;
+		if (c < 1){
+			sendResult2("NaN");
+		}
+		else if (c == 1)
+			sendResult2(d/sum);
+		else{
+			for (var i=2; i<=a; i++){
+				tmp1 = (i-2) % 5;
+				tmp2 = tmp1 % 3;
+				sum = sum + base + ((i-2) - tmp1)*2/5 + (tmp1-tmp2)/3;
+			}
+			sendResult2(d/sum);
+		}
+	}
+	var star,level=0;
+	function setEach(star,level)
+	{
+		switch(star)
+		{
+		case 1: //112+1.5n
+			return (112+(1.5)*level);
+			break;
+		case 2: //116+2n
+			return (116+(2)*level);
+			break;
+		case 3: //120+2.5n
+			return (120+(2.5)*level);
+			break;
+		case 4: //124+3n
+			return (124+(3)*level);
+			break;
+		default:
+			return "請重新計算"
+			break;
+		}
+	}
+	
+	var resourceful=0;//謀
+	var politics=0;//政
+	var charm=0;//魅
+	var momentum=0;//勢
+	
+	function setskillstar(specialty) //資質*倍率/消耗點數
+	{
+		//sendResult7("setskillstar");
+		//取值
+		var a1 = getFirstLevel();//技能等級
+		var a2 = getFirstPower();
+		var b1 = getSecondLevel();//技能等級
+		var b2 = getSecondPower();
+		var c1 = getThirdLevel();//技能等級
+		var c2 = getThirdPower();
+		var d1 = getForthLevel();//技能等級
+		var d2 = getForthPower();
+		
+		var a3,b3,c3,d3=0;//各自倍率
+		var a4,b4,c4,d4=0;//各自消耗點數
+		
+		a4 = a1 * a1 +4;
+		b4 = b1 * b1 +4;
+		c4 = c1 * c1 +4;
+		d4 = d1 * d1 +4;
+		switch(specialty)
+		{
+		case "謀":
+			a3=setEach(4,a1);
+			b3=setEach(2,b1);
+			c3=setEach(1,c1);
+			d3=setEach(1,d1);
+			break;
+		case "政":
+			a3=setEach(1,a1);
+			b3=setEach(4,b1);
+			c3=setEach(2,c1);
+			d3=setEach(1,d1);
+			break;
+		case "魅":
+			a3=setEach(1,a1);
+			b3=setEach(1,b1);
+			c3=setEach(4,c1);
+			d3=setEach(2,d1);
+			break;
+		case "勢":
+			a3=setEach(1,a1);
+			b3=setEach(1,b1);
+			c3=setEach(2,c1);
+			d3=setEach(4,d1);
+			break;
+		default:
+			break;
+		}
+		
+		//資質*倍率/消耗點數
+		var r1 = a2*a3/a4;
+		var r2 = b2*b3/b4;
+		var r3 = c2*c3/c4;
+		var r4 = d2*d3/d4;
+		sendResult1(r1);
+		sendResult2(r2);
+		sendResult3(r3);
+		sendResult4(r4);
+		var re1=0,re2=0;
+		re1=findMax(r1,r2,r3,r4);
+		switch(re1)
+		{
+		case 1:
+			if(r1!=0)
+				sendResult5("點第一排");
+			else
+				sendResult5("請完整輸入必要值");
+			r1=-100;
+			break;
+		case 2:
+			sendResult5("點第二排");
+			r2=-100;
+			break;
+		case 3:
+			sendResult5("點第三排");
+			r3=-100;
+			break;
+		case 4:
+			sendResult5("點第四排");
+			r4=-100;
+			break;
+		default:
+			break;
+		}
+	}
+	
+	//caller
+	function caculateSKILLCP()
+	{
+		var test = getskill();
+		//sendResult7(test);
+		if (test!="請選擇夥伴特長")
+			setskillstar(test);
+		else
+			sendResult5("請先選取夥伴特長");
+	}
+	
+	function getRePower(re)
+	{
+		if(re==1)
+		{
+			return getFirstPower();
+		}
+		else if(re==2)
+		{
+			return getSecondPower();
+		}
+		else if(re==3)
+		{
+			return getThirdPower();
+		}
+		else if(re==4)
+		{
+			return getForthPower();
+		}
+	}
+	function findMax(r1,r2,r3,r4)
+	{
+		if(r1>=r2)
+		{
+			if(r1>=r3)
+			{
+				if(r1>=r4)// r1>r2>r3>r4
+				{
+					return 1;
+					//sendResult5("點第一排");
+				}
+				else // r4>r1>r2>r3
+				{
+					return 4;
+					//sendResult5("點第四排");
+				}
+			}
+			else //r1>r2 , r3>r1
+			{
+				if(r3>=r4) //r1>r2 , r3>r1 , r3>r4 
+				{
+					return 3;
+					//sendResult5("點第三排");
+				}
+				else //r1>r2 , r3>r1 , r4>r3 
+				{
+					return 4;
+					//sendResult5("點第四排");
+				}
+			}
+		}
+		else // r2>r1
+		{
+			if(r2>=r3) // r2>r1 ,r2>r3
+			{
+				if(r2>=r4) // r2>r1 ,r2>r3 , r2>r4
+				{
+					return 2;
+					//sendResult5("點第二排");
+				}
+				else // r2>r1 ,r2>r3 , r4>r2
+				{
+					return 4;
+					//sendResult5("點第四排");
+				}
+			}
+			else // r2>r1 ,r3>r2
+			{
+				if(r3>=r4) // r2>r1 ,r3>r2 , r3>r4
+				{
+					return 3;
+					//sendResult5("點第三排");
+				}
+				else // r2>r1 ,r3>r2 , r4>r3
+				{
+					return 4;
+					//sendResult5("點第四排");
+				}
+			}
+		}
+	}
+	
+	//給p標簽傳值
+	function sendResult1(result_1) {
+		var num = document.getElementById("firstresult")
+		num.innerHTML = result_1;
+	}
+	function sendResult2(result_2) {
+		var num = document.getElementById("secondresult")
+		num.innerHTML = result_2;
+	}
+	function sendResult3(result_3) {
+		var num = document.getElementById("thirdresult")
+		num.innerHTML = result_3;
+	}
+	function sendResult4(result_4) {
+		var num = document.getElementById("forthresult")
+		num.innerHTML = result_4;
+	}
+	function sendResult5(result_5) {
+		var num = document.getElementById("finalresult")
+		num.innerHTML = result_5;
+	}
+	function sendResult6(result_6) {
+		var num = document.getElementById("finalNextresult")
+		num.innerHTML = result_6;
+	}
+	function sendResult7(result_7) {
+		var num = document.getElementById("specialtyresult")
+		num.innerHTML = result_7;
+	}
+	
+	//獲取第一位等級
+	function getFirstLevel() {
+		var firstNumber = document.getElementById("firstlevel").value;
+		return firstNumber;
+	}
+	//獲取第一位勢力
+	function getFirstPower() {
+		var twiceNumber = document.getElementById("firstpower").value;
+		return twiceNumber;
+	}
+	//獲取第二位等級
+	function getSecondLevel() {
+		var firstNumber = document.getElementById("secondlevel").value;
+		return firstNumber;
+	}
+	//獲取第二位勢力
+	function getSecondPower() {
+		var twiceNumber = document.getElementById("secondpower").value;
+		return twiceNumber;
+	}
+	//獲取第三位等級
+	function getThirdLevel() {
+		var firstNumber = document.getElementById("thirdlevel").value;
+		return firstNumber;
+	}
+	//獲取第三位勢力
+	function getThirdPower() {
+		var twiceNumber = document.getElementById("thirdpower").value;
+		return twiceNumber;
+	}
+	//獲取第四位等級
+	function getForthLevel() {
+		var firstNumber = document.getElementById("forthlevel").value;
+		return firstNumber;
+	}
+	//獲取第四位勢力
+	function getForthPower() {
+		var twiceNumber = document.getElementById("forthpower").value;
+		return twiceNumber;
+	}
+	
+	function getskill() {
+		var twiceNumber = document.getElementById("specialty").value;
+		return twiceNumber;
+	}
+</script>
+	</head>
+
+	<body>
+		<h2 class="text-center" style="margin-bottom: 0;">技能計算機</h2>
+		<br>
+		<select id="specialty">
+			<option>請選擇夥伴特長</option>
+			<optgroup label="單特長">
+				<option>謀</option>
+				<option>政</option>
+				<option>魅</option>
+				<option>勢</option>
+			</optgroup>
+			<optgroup label="雙特長">
+				<option>謀政</option>
+				<option>謀魅</option>
+				<option>謀勢</option>
+				<option>政魅</option>
+				<option>政勢</option>
+				<option>魅勢</option>
+			</optgroup>
+			<optgroup label="其他">
+				<option>平衡</option>
+				<option>無雙</option>
+			</optgroup>
+		</select>
+		<output id="specialtyresult"></output>
+
+		<br>
+		<br>
+
+		<table border="1" style="position: center;">
+			<tr>
+				<td></td>
+				<td>填入目前的技能等級</td>
+				<td colspan="2">填入夥伴的資質</td>
+				<td>CP值</td>
+			</tr>
+			<tr>
+				<td>謀</td>
+				<td><input required type="number"  step="1" min="0" max="1000" id="firstlevel" /></td>
+				<td>謀資質</td>
+				<td><input type="text" id="firstpower" /></td>
+				<td align="center"><output id="firstresult"></output></td>
+			</tr>
+			<tr>
+				<td>政</td>
+				<td><input required type="number"  step="1" min="0" max="1000" id="secondlevel" /></td>
+				<td>政資質</td>
+				<td><input type="text" id="secondpower" /></td>
+				<td align="center"><output id="secondresult"></output></td>
+			</tr>
+			<tr>
+				<td>魅</td>
+				<td><input required type="number"  step="1" min="0" max="1000" id="thirdlevel" /></td>
+				<td>魅資質</td>
+				<td><input type="text" id="thirdpower" /></td>
+				<td align="center"><output id="thirdresult"></output></td>
+			</tr>
+			<tr>
+				<td>勢</td>
+				<td><input required type="number"  step="1" min="0" max="1000" id="forthlevel" /></td>
+				<td>勢資質</td>
+				<td><input type="text" id="forthpower" /></td>
+				<td align="center"><output id="forthresult"></output></td>
+			</tr>
+			<tr>
+				<td colspan="4">*CP值計算方式：資質*倍率/消耗點數 <br> *務必填對特長，計算才會準喔!!!
+				</td>
+				<td colspan="1" align="center">&nbsp;
+					<button
+						style="width: inherit; height: inherit; border: 3px orange double; background-color: #FFECC9;"
+						onclick="caculateSKILLCP()">開始計算</button> &nbsp;
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">提示： <font color="#FF0000"><strong>
+							<output id="finalresult"></output>
+					</strong> </font> <output id="finalNextresult"></output>
+				</td>
+			</tr>
+
+
+
+		</table>
+
+
+	</body>
+</span>
+</html>
