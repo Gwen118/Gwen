@@ -10,7 +10,7 @@
 ### 位份
 
 * 宮鬥的遊戲怎能少了位份之爭
-https://github.com/Gwen118/Gwen/blob/217a6ee5f11ddf71d403a596e2992bb1dd04a028/%E4%BD%8D%E4%BB%BD.md
+* [->連結](https://github.com/Gwen118/Gwen/blob/217a6ee5f11ddf71d403a596e2992bb1dd04a028/%E4%BD%8D%E4%BB%BD.md)
 
 
 ### 序號
