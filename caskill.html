@@ -132,6 +132,57 @@
 			c3=setEach(2,c1);
 			d3=setEach(4,d1);
 			break;
+		////////////
+		case "謀政":
+			a3=setEach(3,a1);
+			b3=setEach(3,b1);
+			c3=setEach(1,c1);
+			d3=setEach(1,d1);
+			break;
+		case "謀魅":
+			a3=setEach(3,a1);
+			b3=setEach(1,b1);
+			c3=setEach(3,c1);
+			d3=setEach(1,d1);
+			break;
+		case "謀勢":
+			a3=setEach(3,a1);
+			b3=setEach(1,b1);
+			c3=setEach(1,c1);
+			d3=setEach(3,d1);
+			break;
+			////
+		case "政魅":
+			a3=setEach(1,a1);
+			b3=setEach(3,b1);
+			c3=setEach(3,c1);
+			d3=setEach(1,d1);
+			break;
+		case "政勢":
+			a3=setEach(1,a1);
+			b3=setEach(3,b1);
+			c3=setEach(1,c1);
+			d3=setEach(3,d1);
+			break;
+		case "魅勢":
+			a3=setEach(1,a1);
+			b3=setEach(1,b1);
+			c3=setEach(3,c1);
+			d3=setEach(3,d1);
+			break;
+		//////////
+		case "平衡":
+			a3=setEach(2,a1);
+			b3=setEach(2,b1);
+			c3=setEach(2,c1);
+			d3=setEach(2,d1);
+			break;
+		case "無雙":
+			a3=setEach(3,a1);
+			b3=setEach(3,b1);
+			c3=setEach(3,c1);
+			d3=setEach(3,d1);
+			break;
 		default:
 			break;
 		}
@@ -157,15 +208,24 @@
 			r1=-100;
 			break;
 		case 2:
-			sendResult5("點第二排");
+			if(r2!=0)
+				sendResult5("點第二排");
+			else
+				sendResult5("請完整輸入必要值");
 			r2=-100;
 			break;
 		case 3:
-			sendResult5("點第三排");
+			if(r3!=0)
+				sendResult5("點第三排");
+			else
+				sendResult5("請完整輸入必要值");
 			r3=-100;
 			break;
 		case 4:
-			sendResult5("點第四排");
+			if(r4!=0)
+				sendResult5("點第四排");
+			else
+				sendResult5("請完整輸入必要值");
 			r4=-100;
 			break;
 		default:
@@ -375,34 +435,34 @@
 		<table border="1" style="position: center;">
 			<tr>
 				<td></td>
-				<td>填入目前的技能等級</td>
-				<td colspan="2">填入夥伴的資質</td>
-				<td>CP值</td>
+				<td align="center">目前的技能等級</td>
+				<td colspan="2" align="center">夥伴的資質</td>
+				<td align="center">CP值</td>
 			</tr>
 			<tr>
 				<td>謀</td>
-				<td><input required type="number"  step="1" min="0" max="1000" id="firstlevel" /></td>
+				<td align="center"><input required type="number"  step="1" min="0" max="1000" id="firstlevel" /></td>
 				<td>謀資質</td>
 				<td><input type="text" id="firstpower" /></td>
 				<td align="center"><output id="firstresult"></output></td>
 			</tr>
 			<tr>
 				<td>政</td>
-				<td><input required type="number"  step="1" min="0" max="1000" id="secondlevel" /></td>
+				<td align="center"><input required type="number"  step="1" min="0" max="1000" id="secondlevel" /></td>
 				<td>政資質</td>
 				<td><input type="text" id="secondpower" /></td>
 				<td align="center"><output id="secondresult"></output></td>
 			</tr>
 			<tr>
 				<td>魅</td>
-				<td><input required type="number"  step="1" min="0" max="1000" id="thirdlevel" /></td>
+				<td align="center"><input required type="number"  step="1" min="0" max="1000" id="thirdlevel" /></td>
 				<td>魅資質</td>
 				<td><input type="text" id="thirdpower" /></td>
 				<td align="center"><output id="thirdresult"></output></td>
 			</tr>
 			<tr>
 				<td>勢</td>
-				<td><input required type="number"  step="1" min="0" max="1000" id="forthlevel" /></td>
+				<td align="center"><input required type="number"  step="1" min="0" max="1000" id="forthlevel" /></td>
 				<td>勢資質</td>
 				<td><input type="text" id="forthpower" /></td>
 				<td align="center"><output id="forthresult"></output></td>
