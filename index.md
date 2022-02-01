@@ -7,6 +7,12 @@
 * 買菜先比價，羈絆也要
 * [->連結](https://gwen118.github.io/Gwen/ca.html)
 
+### 位份
+
+* 宮鬥的遊戲怎能少了位份之爭
+https://github.com/Gwen118/Gwen/blob/217a6ee5f11ddf71d403a596e2992bb1dd04a028/%E4%BD%8D%E4%BB%BD.md
+
+
 ### 序號
 
 * 遊戲裡面兌換喔 (2022/2/1 測試都已過期，永久停更)
@@ -16,4 +22,5 @@
 
 * 成為小當家之前一定要先有好食材
 * [->連結](https://github.com/molinehuang/gwen/blob/0a31110ddd073e0afeb393f70b4afbed3039e19d/%E7%8B%A9%E7%8D%B5.md)
+
 
