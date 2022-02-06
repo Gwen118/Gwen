@@ -199,10 +199,10 @@
 		var r2 = b2*b3/b4;
 		var r3 = c2*c3/c4;
 		var r4 = d2*d3/d4;
-		sendResult1(r1);
-		sendResult2(r2);
-		sendResult3(r3);
-		sendResult4(r4);
+		sendResult1(Math.round(r1*100)/100);
+		sendResult2(Math.round(r2*100)/100);
+		sendResult3(Math.round(r3*100)/100);
+		sendResult4(Math.round(r4*100)/100);
 		var re1=0,re2=0;
 		re1=findMax(r1,r2,r3,r4);
 		switch(re1)
@@ -331,6 +331,37 @@
 			}
 		}
 	}
+	function add(num)
+	{
+		switch (num){
+		case 1:
+			document.getElementById("firstlevel").value = parseInt(document.getElementById("firstlevel").value) + 1;
+			break;
+		case 2:
+			document.getElementById("secondlevel").value = parseInt(document.getElementById("secondlevel").value) + 1;
+			break;
+		case 3:
+			document.getElementById("thirdlevel").value = parseInt(document.getElementById("thirdlevel").value) + 1;
+			break;
+		case 4:
+			document.getElementById("forthlevel").value = parseInt(document.getElementById("forthlevel").value) + 1;
+			break;
+		}
+		caculateSKILLCP();
+	}
+	function sub(num)
+	{
+		switch (num){
+		case 1:
+			document.getElementById("firstlevel").value = parseInt(document.getElementById("firstlevel").value) - 1;
+			break;
+		case 2:
+		case 3:
+		case 4:
+		}
+		caculateSKILLCP();
+	}
+	
 	
 	//給p標簽傳值
 	function sendResult1(result_1) {
@@ -435,41 +466,81 @@
 			</optgroup>
 		</select>
 		<output id="specialtyresult"></output>
-
+		<output id="test"></output>
 		<br>
 		<br>
 
 		<table border="1" style="position: center;">
 			<tr>
 				<td></td>
-				<td align="center">目前的技能等級</td>
-				<td colspan="2" align="center">夥伴的資質</td>
+				<td align="center" WIDTH=35%>目前的技能等級</td>
+				<td colspan="2" align="center" WIDTH=35%>夥伴的資質</td>
 				<td align="center">CP值</td>
 			</tr>
 			<tr>
 				<td>謀</td>
-				<td align="center"><input required type="number"  step="1" min="0" max="1000" id="firstlevel" /></td>
+				<td align="center">
+					<button
+						style="width: inherit; height: inherit; border: 3px 	#FFDAB9 double; background-color: #FFFFF0;"
+						onclick="sub(1)">-
+					</button>
+					<input required type="number"  step="1" min="0" max="1000" id="firstlevel" />
+					<button
+						style="width: inherit; height: inherit; border: 3px 	#FFDAB9 double; background-color: #FFFFF0;"
+						onclick="add(1)">+
+					</button>
+				</td>
 				<td>謀資質</td>
 				<td><input type="text" id="firstpower" /></td>
 				<td align="center"><output id="firstresult"></output></td>
 			</tr>
 			<tr>
 				<td>政</td>
-				<td align="center"><input required type="number"  step="1" min="0" max="1000" id="secondlevel" /></td>
+				<td align="center">
+					<button
+						style="width: inherit; height: inherit; border: 3px 	#FFDAB9 double; background-color: #FFFFF0;"
+						onclick="sub(2)">-
+					</button>
+					<input required type="number"  step="1" min="0" max="1000" id="secondlevel" />
+					<button
+						style="width: inherit; height: inherit; border: 3px 	#FFDAB9 double; background-color: #FFFFF0;"
+						onclick="add(2)">+
+					</button>
+				</td>
 				<td>政資質</td>
 				<td><input type="text" id="secondpower" /></td>
 				<td align="center"><output id="secondresult"></output></td>
 			</tr>
 			<tr>
 				<td>魅</td>
-				<td align="center"><input required type="number"  step="1" min="0" max="1000" id="thirdlevel" /></td>
+				<td align="center">
+					<button
+						style="width: inherit; height: inherit; border: 3px 	#FFDAB9 double; background-color: #FFFFF0;"
+						onclick="sub(3)">-
+					</button>
+					<input required type="number"  step="1" min="0" max="1000" id="thirdlevel" />
+					<button
+						style="width: inherit; height: inherit; border: 3px 	#FFDAB9 double; background-color: #FFFFF0;"
+						onclick="add(3)">+
+					</button>
+				</td>
 				<td>魅資質</td>
 				<td><input type="text" id="thirdpower" /></td>
 				<td align="center"><output id="thirdresult"></output></td>
 			</tr>
 			<tr>
 				<td>勢</td>
-				<td align="center"><input required type="number"  step="1" min="0" max="1000" id="forthlevel" /></td>
+				<td align="center">
+					<button
+						style="width: inherit; height: inherit; border: 3px 	#FFDAB9 double; background-color: #FFFFF0;"
+						onclick="sub(4)">-
+					</button>
+					<input required type="number"  step="1" min="0" max="1000" id="forthlevel" />
+					<button
+						style="width: inherit; height: inherit; border: 3px 	#FFDAB9 double; background-color: #FFFFF0;"
+						onclick="add(4)">+
+					</button>
+				</td>
 				<td>勢資質</td>
 				<td><input type="text" id="forthpower" /></td>
 				<td align="center"><output id="forthresult"></output></td>
