@@ -20,12 +20,7 @@
 	var r1,r2,r3,r4;
 	var re1,re2;
 	var specialty;
-	document.addEventListener('touchmove', function(event) {
-		event = event.originalEvent || event;
-		if (event.scale !== 1) {
-			event.preventDefault();
-			}
-		}, false);
+
 
 	//calculate
 	function test(){
@@ -211,6 +206,7 @@
 		sendResult4(Math.round(r4*100)/100);
 		var re1=0,re2=0;
 		re1=findMax(r1,r2,r3,r4);
+		var temp=0;
 		switch(re1)
 		{
 		case 1:
@@ -244,6 +240,49 @@
 		default:
 			break;
 		}
+		
+		re2=findMax(r1,r2,r3,r4);
+		/*
+		switch(re2)
+		{
+		case 1:
+			if(r1!=0)
+				sendResult8("點第一排");
+			else
+				sendResult8("請完整輸入必要值");
+			temp=r1;
+			r1=-100;
+			break;
+		case 2:
+			if(r2!=0)
+				sendResult8("點第二排");
+			else
+				sendResult8("請完整輸入必要值");
+			temp=r2;
+			r2=-100;
+			break;
+		case 3:
+			if(r3!=0)
+				sendResult8("點第三排");
+			else
+				sendResult8("請完整輸入必要值");
+			temp=r3;
+			r3=-100;
+			break;
+		case 4:
+			if(r4!=0)
+				sendResult8("點第四排");
+			else
+				sendResult8("請完整輸入必要值");
+			temp=r4;
+			r4=-100;
+			break;
+		default:
+			break;
+		}*/
+		//sendResult8(temp);
+		//temp = 第二高的倍率
+		//sendResult8();
 	}
 	
 	//caller
@@ -362,8 +401,14 @@
 			document.getElementById("firstlevel").value = parseInt(document.getElementById("firstlevel").value) - 1;
 			break;
 		case 2:
+			document.getElementById("secondlevel").value = parseInt(document.getElementById("secondlevel").value) - 1;
+			break;
 		case 3:
+			document.getElementById("thirdlevel").value = parseInt(document.getElementById("thirdlevel").value) - 1;
+			break;
 		case 4:
+			document.getElementById("forthlevel").value = parseInt(document.getElementById("forthlevel").value) - 1;
+			break;
 		}
 		caculateSKILLCP();
 	}
@@ -397,6 +442,10 @@
 	function sendResult7(result_7) {
 		var num = document.getElementById("specialtyresult")
 		num.innerHTML = result_7;
+	}
+	function sendResult8(result_8) {
+		var num = document.getElementById("test")
+		num.innerHTML = result_8;
 	}
 	
 	//獲取第一位等級
