@@ -240,6 +240,24 @@
 		var num = document.getElementById("finalNextresult")
 		num.innerHTML = result_6;
 	}
+	function clean()
+	{
+		document.getElementById("firstresult").innerHTML="";
+		document.getElementById("secondresult").innerHTML="";
+		document.getElementById("thirdresult").innerHTML="";
+		document.getElementById("forthresult").innerHTML="";
+		document.getElementById("finalresult").innerHTML="";
+		document.getElementById("finalNextresult").innerHTML="";
+		document.getElementById("firstlevel").value="";
+		document.getElementById("firstpower").value="";
+		document.getElementById("secondlevel").value="";
+		document.getElementById("secondpower").value="";
+		document.getElementById("thirdlevel").value="";
+		document.getElementById("thirdpower").value="";
+		document.getElementById("forthlevel").value="";
+		document.getElementById("forthpower").value="";
+		
+	}
 	
 	//獲取第一位等級
 	function getFirstLevel() {
@@ -285,8 +303,12 @@
 	</head>
 
 	<body>
-		<h2 class="text-center" style="margin-bottom: 0;">羈絆值計算機</h2>
+		<h2 class="text-center" style="margin-bottom: 0;">羈絆值計算機&nbsp;
+					<button style="width: inherit; height: inherit; border: 3px black double; background-color: #FFECC9;"
+						onclick="clean()">Reset</button> &nbsp;</h2>
+		
 		<br>
+		
 
 		<table border="1" style="position: center;">
 			<tr>
